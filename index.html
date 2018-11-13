@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SƠN BĂNG</title>
+	<meta charset="utf-8" />
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+	<form>
+		<p>Chọn vật liệu</p>
+		<select id="vat_lieu">
+			<option value="mica">MICA</option>
+		</select>
+		<p>Chọn Loại</p>
+		<select id="loai">
+			<option>--Chọn loại--</option>
+			<option value="dai_loan">Đài Loan</option>
+			<option value="trung_quoc">Trung Quốc</option>
+		</select>
+		<p>Chọn màu mica</p>
+		<select id="mau">
+			<option>--Chọn màu--</option>
+			<option value="trang_sua">Trắng sữa</option>
+			<option value="trong_suot">Trong suốt</option>
+			<option value="mau_khac">Màu khác</option>
+		</select>
+		<p>Độ dày</p>
+		<select id="do_day">
+			<option>--Chọn độ dày--</option>
+			<option class="do_day_1" value="1.8mm">1.8mm</option>
+			<option class="do_day_2" value="2mm">2mm</option>
+			<option class="do_day_3" value="2.8mm">2.8mm</option>
+			<option class="do_day_4" value="3mm">3mm</option>
+			<option class="do_day_5" value="4mm">4mm</option>
+			<option class="do_day_6" value="4.5mm">4.5mm</option>
+			<option class="do_day_7" value="5mm">5mm</option>
+			<option class="do_day_8" value="6mm">6mm</option>
+			<option class="do_day_9" value="8mm">8mm</option>
+			<option class="do_day_10" value="10mm">10mm</option>
+			<option class="do_day_11" value="15mm">15mm</option>
+			<option class="do_day_12" value="20mm">20mm</option>
+			<option class="do_day_13" value="30mm">30mm</option>
+		</select>
+		<p>Chiều Dài:</p>
+		<input type="text" id="chieu_dai" name="chieu_dai">
+		<p>Chiều rộng</p>
+		<input type="text" id="chieu_rong" name="chieu_rong"><br>
+		<button id="tinh_tien">Tính tiền đơn hàng</button>
+	</form>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			var count, gia_tien;
+			$("select#loai").change(function(){
+				var loai = $("#loai").children("option:selected").val();
+				if(loai == 'trung_quoc'){
+					count = 1;
+					$("#mau option[value='mau_khac']").remove();
+					$("#do_day option[value='5mm']").remove();
+					$("#do_day option[value='6mm']").remove();
+					$("#do_day option[value='8mm']").remove();
+					$("#do_day option[value='10mm']").remove();
+					$("#do_day option[value='15mm']").remove();
+					$("#do_day option[value='20mm']").remove();
+					$("#do_day option[value='30mm']").remove();
+					/*gia_tien = $( "#do_day").val();
+					alert(gia_tien);*/
+				}
+				if(loai == 'dai_loan' && count == 1){
+					$("#mau").append('<option value="mau_khac">Màu khác</option>');
+					$("#do_day").append('<option class="do_day_7" value="5mm">5mm</option>');
+					$("#do_day").append('<option class="do_day_8" value="6mm">6mm</option>');
+					$("#do_day").append('<option class="do_day_9" value="8mm">8mm</option>');
+					$("#do_day").append('<option class="do_day_10" value="10mm">10mm</option>');
+					$("#do_day").append('<option class="do_day_11" value="15mm">15mm</option>');
+					$("#do_day").append('<option class="do_day_12" value="20mm">20mm</option>');
+					$("#do_day").append('<option class="do_day_13" value="30mm">30mm</option>');
+				}
+			});	
+			$( "#tinh_tien" ).click(function() {
+				alert($('#chieu_dai').val()*$('#chieu_rong').val()*gia_tien);
+			});
+
+
+		});
+		
+	</script>
+</body>
+</html>
