@@ -27,7 +27,7 @@
 		<p>Độ dày</p>
 		<select id="do_day">
 			<option>--Chọn độ dày--</option>
-			<option class="do_day_1" value="1.8mm">1.8mm</option>
+			<!--<option class="do_day_1" value="1.8mm">1.8mm</option>
 			<option class="do_day_2" value="2mm">2mm</option>
 			<option class="do_day_3" value="2.8mm">2.8mm</option>
 			<option class="do_day_4" value="3mm">3mm</option>
@@ -39,7 +39,7 @@
 			<option class="do_day_10" value="10mm">10mm</option>
 			<option class="do_day_11" value="15mm">15mm</option>
 			<option class="do_day_12" value="20mm">20mm</option>
-			<option class="do_day_13" value="30mm">30mm</option>
+			<option class="do_day_13" value="30mm">30mm</option>-->
 		</select>
 		<p>Chiều Dài:</p>
 		<input type="text" id="chieu_dai" name="chieu_dai">
@@ -54,9 +54,18 @@
 			$("select#loai").change(function(){
 				var loai = $("#loai").children("option:selected").val();
 				if(loai == 'trung_quoc'){
-					count = 1;
+					$('#do_day').empty();
 					$("#mau option[value='mau_khac']").remove();
-					$("#do_day option[value='5mm']").remove();
+					$("#do_day").append('<option>--Chọn độ dày--</option>');
+					$("#do_day").append('<option class="do_day_7" value="347000">1.8mm</option>');
+					$("#do_day").append('<option class="do_day_8" value="384000">2mm</option>');
+					$("#do_day").append('<option class="do_day_9" value="475000">2.5mm</option>');
+					$("#do_day").append('<option class="do_day_10" value="529000">2.8mm</option>');
+					$("#do_day").append('<option class="do_day_11" value="566000">3mm</option>');
+					$("#do_day").append('<option class="do_day_12" value="710000">3.8mm</option>');
+					$("#do_day").append('<option class="do_day_13" value="746000">4mm</option>');
+					$("#do_day").append('<option class="do_day_13" value="838000">4.5mm</option>');
+					/*$("#do_day option[value='5mm']").remove();
 					$("#do_day option[value='6mm']").remove();
 					$("#do_day option[value='8mm']").remove();
 					$("#do_day option[value='10mm']").remove();
@@ -66,17 +75,37 @@
 					/*gia_tien = $( "#do_day").val();
 					alert(gia_tien);*/
 				}
-				if(loai == 'dai_loan' && count == 1){
+				if(loai == 'dai_loan'){
+					$('#do_day').empty();
 					$("#mau").append('<option value="mau_khac">Màu khác</option>');
-					$("#do_day").append('<option class="do_day_7" value="5mm">5mm</option>');
-					$("#do_day").append('<option class="do_day_8" value="6mm">6mm</option>');
-					$("#do_day").append('<option class="do_day_9" value="8mm">8mm</option>');
-					$("#do_day").append('<option class="do_day_10" value="10mm">10mm</option>');
-					$("#do_day").append('<option class="do_day_11" value="15mm">15mm</option>');
-					$("#do_day").append('<option class="do_day_12" value="20mm">20mm</option>');
-					$("#do_day").append('<option class="do_day_13" value="30mm">30mm</option>');
+					$("#do_day").append('<option>--Chọn độ dày--</option>');
+					$("#do_day").append('<option class="do_day_7" value="733000">1.8mm</option>');
+					$("#do_day").append('<option class="do_day_8" value="772000">2mm</option>');
+					$("#do_day").append('<option class="do_day_9" value="927000">2.5mm</option>');
+					$("#do_day").append('<option class="do_day_10" value="1034000">2.8mm</option>');
+					$("#do_day").append('<option class="do_day_11" value="1106000">3mm</option>');
+					$("#do_day").append('<option class="do_day_12" value="1474000">4mm</option>');
+					$("#do_day").append('<option class="do_day_13" value="1659000">4.5mm</option>');
+					$("#do_day").append('<option class="do_day_13" value="1769000">4.8mm</option>');
+					$("#do_day").append('<option class="do_day_7" value="1843000">5mm</option>');
+					$("#do_day").append('<option class="do_day_8" value="2138000">5.8mm</option>');
+					$("#do_day").append('<option class="do_day_9" value="2211000">6mm</option>');
+					$("#do_day").append('<option class="do_day_10" value="2949000">8mm</option>');
+					$("#do_day").append('<option class="do_day_11" value="3317000">9mm</option>');
+					$("#do_day").append('<option class="do_day_12" value="3686000">10mm</option>');
+					$("#do_day").append('<option class="do_day_13" value="4424000">12mm</option>');
+					$("#do_day").append('<option class="do_day_13" value="5796000">15mm</option>');
+					$("#do_day").append('<option class="do_day_13" value="6954000">18mm</option>');
+					$("#do_day").append('<option class="do_day_13" value="7728000">20mm</option>');
+					$("#do_day").append('<option class="do_day_13" value="10104000">25mm</option>');
+					$("#do_day").append('<option class="do_day_13" value="12124000">30mm</option>');
+
 				}
 			});	
+			$("select#do_day").change(function(){
+				gia_tien = $("#do_day").children("option:selected").val();
+
+			});
 			$( "#tinh_tien" ).click(function() {
 				alert($('#chieu_dai').val()*$('#chieu_rong').val()*gia_tien);
 			});
